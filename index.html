@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EcoDrop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      background-color: #002f7f;
+      color: white;
+      padding: 20px 0;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 80px;
+    }
+    header nav {
+      display: flex;
+      gap: 30px;
+      margin-left: auto;
+      justify-content: center;
+      flex-grow: 1;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      background-color: #00aaff;
+      height: 510px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .hero .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .hero-text {
+      max-width: 50%;
+    }
+    .hero h1 {
+      color: #09ff05;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin: 0;
+    }
+      .hero h2 {
+      color: #ffffff;
+      font-size: 40px;
+      font-weight: bold;
+      margin: 2;
+    }
+    .hero p {
+      font-size: 0.9rem;
+      color: white;
+      line-height: 1.5;
+      font-family: "Lucida Console", "Courier New", monospace;
+    }
+    .hero img {
+      max-height: 100%;
+      height: 92%;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .hero .buttons {
+      margin-top: 20px;
+    }
+    .hero .buttons a {
+      text-decoration: none;
+      font-size: 16px;
+      color: white;
+      background-color: #002f7f;
+      padding: 12px 20px;
+      border-radius: 5px;
+      margin: 0 10px;
+      display: inline-block;
+      font-weight: bold;
+    }
+    .hero .buttons a:hover {
+      background-color: #0056cc;
+    }
+    .chat-wrapper {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+    }
+    .chat-button {
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    .chat-button:hover {
+      background-color: #0088cc;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    .chatbox {
+      display: none;
+      width: 350px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+    }
+    .chatbox-header {
+      background-color: #00aaff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .chatbox-header .logo {
+      height: 30px;
+      width: auto;
+    }
+    .chatbox-header .close-button {
+      color: white;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .chatbox-content {
+      padding: 20px;
+      font-size: 16px;
+      color: #555;
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      min-height: 100px;
+    }
+    .chatbox-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px;
+    }
+    .chatbox-button {
+      padding: 12px;
+      text-align: center;
+      font-size: 16px;
+      color: white;
+      background-color: #00aaff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .chatbox-button:hover {
+      background-color: #0088cc;
+    }
+    .yes-no-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 15px;
+    }
+
+    .yes-button {
+      background-color: #00aaff;
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .yes-button:hover {
+      background-color: green;
+    }
+
+    .no-button {
+      background-color: #00aaff;
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .no-button:hover {
+      background-color: red;
+    }
+    .chatbox-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-top: 1px solid #e0e0e0;
+      background-color: #f9f9f9;
+    }
+    .chatbox-footer input {
+      flex: 1;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+    .icon-button {
+      background: none;
+      border: none;
+      cursor: not-allowed;
+      padding: 5px;
+    }
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #003a8c;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html">
+        <img src="Eco.png" alt="Logo" />
+      </a>
+      <nav>
+        <a href="About.html">About</a>
+        <a href="Product.html">Products</a>
+        <a href="Equipment.html">Equipment</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <div class="hero">
+    <div class="container">
+      <div class="hero-text">
+        <h1>- Welcome to -</h1>
+        <h2>Stay Pure, Stay hydrated!</h2>
+        <p>Purely natural spring water from the Mountains.</p>
+        <div class="buttons">
+          <a href="Product.html">Order Now</a>
+        </div>
+      </div>
+      <img src="Del.png" alt="Delivery Man with Water" />
+    </div>
+  </div>
+  <div class="chat-wrapper">
+    <button class="chat-button" id="chatButton">Chat with Us</button>
+    <div class="chatbox" id="chatbox">
+      <div class="chatbox-header">
+        <img src="Eco.png" alt="EcoDrop Logo" class="logo">
+        <span>Welcome to EcoDrop</span>
+        <button class="close-button" id="closeButton">&times;</button>
+      </div>
+      <div class="chatbox-content" id="chatContent">
+        <p>Hello! We're here to assist you with water delivery and dispenser rental services.</p>
+        <p>Let’s get started!</p>
+        <p>What would you like to do today?</p>
+      </div>
+      <div class="chatbox-actions">
+        <button class="chatbox-button" onclick="handleChoice('order')">Order Water</button>
+        <button class="chatbox-button" onclick="handleChoice('rent')">Rent a Water Dispenser</button>
+      </div>
+      <div class="chatbox-footer">
+        <input type="text" placeholder="Type a message..." disabled>
+        <button class="icon-button" disabled>
+          <img src="Send.png" alt="Send" class="icon">
+        </button>
+        <button class="icon-button" disabled>
+          <img src="Attach.png" alt="Attach" class="icon">
+        </button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2024 EcoDrop. All rights reserved.</p>
+  </footer>
+  <script>
+    const chatButton = document.getElementById("chatButton");
+    const chatbox = document.getElementById("chatbox");
+    const chatContent = document.getElementById("chatContent");
+    const closeButton = document.getElementById("closeButton");
+
+    chatButton.addEventListener("click", () => {
+      chatbox.style.display = chatbox.style.display === "block" ? "none" : "block";
+    });
+
+    closeButton.addEventListener("click", () => {
+      chatbox.style.display = "none";
+    });
+
+    function handleChoice(choice) {
+      chatContent.innerHTML = "";
+      if (choice === "order") {
+        setTimeout(() => {
+          chatContent.innerHTML = `
+            <p>What type of water would you like to order?</p>
+            <div class="chatbox-actions">
+              <button class="chatbox-button" onclick="handleNextStep('gallon')">Gallon Water</button>
+              <button class="chatbox-button" onclick="handleNextStep('bulk')">Bulk Water</button>
+              <button class="chatbox-button" onclick="handleNextStep('bottle')">Bottle Water</button>
+              <button class="chatbox-button" onclick="handleNextStep('private')">Private Label</button>
+            </div>
+          `;
+        }, 1000);
+      } else if (choice === "rent") {
+        setTimeout(() => {
+          chatContent.innerHTML = `
+            <p>Which water dispenser would you like to rent?</p>
+            <div class="chatbox-actions">
+              <button class="chatbox-button" onclick="handleNextStep('archway')">Archway Cooler</button>
+              <button class="chatbox-button" onclick="handleNextStep('premium')">Premium Cooler</button>
+              <button class="chatbox-button" onclick="handleNextStep('apex')">Apex Cooler</button>
+              <button class="chatbox-button" onclick="handleNextStep('noRent')">No, thank you</button>
+            </div>
+          `;
+        }, 1000);
+      }
+    }
+
+    function handleNextStep(step) {
+      chatContent.innerHTML = "";
+      if (step === "gallon" || step === "bulk" || step === "bottle" || step === "private") {
+        chatContent.innerHTML = `
+          <p>You have selected ${capitalizeFirstLetter(step)} water.</p>
+          <p>Would you like to proceed?</p>
+          <div class="yes-no-container">
+            <button class="yes-button" onclick="redirectToContactPage()">Yes</button>
+            <button class="no-button" onclick="closeChat()">No</button>
+          </div>
+        `;
+      } else if (step === "archway" || step === "premium" || step === "apex") {
+        chatContent.innerHTML = `
+          <p>You have selected the ${capitalizeFirstLetter(step)} water dispenser.</p>
+          <p>Would you like to proceed?</p>
+          <div class="yes-no-container">
+            <button class="yes-button" onclick="redirectToContactPage()">Yes</button>
+            <button class="no-button" onclick="closeChat()">No</button>
+          </div>
+        `;
+      } else if (step === "noRent") {
+        chatContent.innerHTML = `<p>No problem! Let us know if you change your mind.</p>`;
+        setTimeout(() => {
+          chatbox.style.display = "none";
+        }, 1000);
+      }
+    }
+
+    function closeChat() {
+      chatContent.innerHTML = `<p>No problem! Let us know if you change your mind.</p>`;
+      setTimeout(() => {
+        chatbox.style.display = "none";
+      }, 1000);
+    }
+
+    function redirectToContactPage() {
+      window.location.href = "Contact.html";
+    }
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  </script>
+</body>
+</html>

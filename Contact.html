@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f8fb;
+      color: #333;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      background-color: #002f7f;
+      color: white;
+      padding: 20px 0;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 80px;
+    }
+    header nav {
+      display: flex;
+      gap: 30px;
+      margin-left: auto;
+      justify-content: center;
+      flex-grow: 1;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      background-color: #4fa0fe;
+      height: 510px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .hero .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    section {
+      padding: 20px;
+    }
+    .container-1 {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start; 
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      padding: 20px;
+      gap: 20px;
+    }
+    .info,
+    .form-container {
+      flex: 1;
+    }
+    .info {
+      padding-right: 20px;
+    }
+    .form-container {
+      background-color: #f0f4fa;
+      padding-left: 20px;
+    }
+    .form input,
+    .form select,
+    .form button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .form button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .form button:hover {
+      background-color: #0056b3;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup.active {
+      display: flex;
+    }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 300px;
+    }
+    .popup-content button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .popup-content button:hover {
+      background-color: #0056b3;
+    }
+    .popup-content .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .info-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 40px 20px;
+      background-color: #f0f4fa; 
+      margin-top: 1px;
+      margin-left: 230px;  
+      margin-right: 230px; 
+      border-radius: 8px;
+    }
+    .info-box {
+      text-align: center;
+      max-width: 250px;
+    }
+    .info-box img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+    .info-box h3 {
+      font-size: 18px;
+      color: #0939db;
+      margin: 10px 0;
+    }
+    .info-box p {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+    }
+     section h1 {
+            font-size: 36px; 
+            color: #002f7f; 
+            margin: 20px 0; 
+            font-weight: bold;}
+  
+      section h2 {
+            font-size: 15px; 
+            color: #1a1e26; 
+            margin: 20px 0; 
+            font-weight: bold;}
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #003a8c;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html">
+      <img src="Eco.png" alt="Logo" /></a>
+      <nav>
+        <a href="About.html">About</a>
+        <a href="Product.html">Products</a>
+        <a href="Equipment.html">Equipment</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <div class="container-1">
+      <div class="info">
+        <p style="color: #7db9ff; font-size: 0.9rem; font-weight: bold;">- DELIVERY -</p>
+        <h1>Order Form</h1>
+        <div class="container">
+        <h2>We promise not just fast water delivery but designate a specific period of time — 
+          <b style="color: #7db9ff; font-size: 1rem; font-weight: bold;"> 60 min </b><b style="color: #89ff71; font-size: 1.5rem; font-weight: bold;">*</b></p>
+        </div>
+          <ul>
+          <li>Subject to ordering before 18:00 (on Sun until 15:00).</li>
+          <li>It is possible to change the delivery time the next day after the holidays.</li>
+          <li>Delivery time may vary for offices.</li>
+          <li>Intervals are subject to change due to difficult weather and traffic conditions.</li>
+          <li>Delivery outside the city may have a number of restrictions — check with the manager.</li>
+        </ul>
+        <p><b style="color: #7db9ff; font-size: 1rem; font-weight: bold;">Get a discount for our delay:</b> 10 min = 10% discount!</p>
+        <p><small>* The discount is not provided for complex traffic conditions;</small></p>
+        <p><small>* The discount is not available the day after the public holiday;</small></p> 
+        
+      </div>
+
+      <div class="form-container">
+        <form class="form" onsubmit="showPopup(event)">
+          <input type="text" placeholder="Full Name*" required />
+          <input type="text" placeholder="Phone Number*" required />
+          <input type="text" placeholder="Address*" required />
+          <select required> 
+              <option value="disabled selected">Dispenser Option*</option>
+              <option value="Method">Rent</option>
+              <option value="Method">Buy</option>
+              <option value="Method">No Dispenser</option>
+            </select>
+            <select required>
+              <option value="disabled selected">Dispenser Type*</option>
+              <option value="Despenser">Archway Cooler</option>
+              <option value="Despenser">Premium Cooler</option>
+              <option value="Despenser">Apex Cooler</option>
+              <option value="Despenser">None</option>
+            </select>
+            <select required>
+            <option value="disabled selected">Water Type*</option>
+            <option value="bottled">Gallon Water</option>
+            <option value="purified">Bulk Water</option>
+            <option value="purified">Bottle Water</option>
+            <option value="purified">Label Water</option>
+          </select>
+          <input type="number" placeholder="Quantity*" min="1" required />
+          <label for="date-requested" style="color: #7b7979; font-size: 1rem;">Date Requested:</label>
+          <input type="date" required />
+          <button type="submit">Submit</button>
+        </form>
+        <p style="color: #fb2d2d; font-size: 1rem; font-weight: bold;"><small><I> Please note: The payment method for this order is cash on delivery only.</small></p>
+        </I></div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <div class="info-box">  
+      <img src="Headset.jpg" alt="Taking Orders">
+      <h3>Taking Orders</h3>
+      <p>Mon-Sat 08:00 - 20:00<br>Sun 09:00 - 18:00</p>
+    </div>
+
+    <div class="info-box">
+      <img src="Deliver.jpg" alt="Delivering Orders">
+      <h3>Delivering Orders</h3>
+      <p>Mon-Sat 09:00 - 20:00<br>Sun 09:00 - 18:00</p>
+    </div>
+
+    <div class="info-box">
+      <img src="Phone.jpg" alt="Phone Number">
+      <h3>Phone Number</h3>
+      <p>+1 (234) 567 89 00<br>+1 (234) 567 89 01</p>
+    </div>
+
+    <div class="info-box">
+      <img src="Email.jpg" alt="Email">
+      <h3>Email</h3>
+      <p>EcoDrop_Delivery@email.com<br>EcoDrop_support@email.com</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 EcoDrop. All rights reserved.</p>
+  </footer>
+
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <span class="close" onclick="hidePopup()">×</span>
+      <img src="Check.png" height="100">
+      <h3>Thank you!</h3>
+      <p>We will contact you shortly.</p>
+      <button onclick="hidePopup()">Ok</button>
+    </div>
+  </div>
+</section>
+
+
+  <script>
+    function showPopup(event) {
+      event.preventDefault();
+      document.getElementById("popup").classList.add("active");
+    }
+    function hidePopup() {
+      document.getElementById("popup").classList.remove("active");
+    }
+  
+  </script>
+</body>
+</html>
